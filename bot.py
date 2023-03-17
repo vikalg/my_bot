@@ -9,6 +9,9 @@ logging.basicConfig(level=logging.INFO)
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
 
+@dp.message_handler(text='Привет')
+async def echo(message: types.Message):
+    await message.answer('Приветствую тебя пользователь')
 
 @dp.message_handler(commands=['start'])
 async def echo(message: types.Message):
