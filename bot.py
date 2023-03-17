@@ -14,6 +14,11 @@ dp = Dispatcher(bot)
 async def echo(message: types.Message):
    await message.reply('Start')
 
+@dp.message_handler(commands="send")
+async def send_animal(message: types.Message):
+    animals_emojis = {"cat": "😺 ", "dog": "🐶", "unicorn": "🦄"}
+    args = message.get_args()
+    await message.answer(animals_emojis.get(args, f"Нет такого аргумента! Выбор : {', '.join(animals_emojis.keys())}"))  
 
 @dp.message_handler(commands=['help'])
 async def echo(message: types.Message):
